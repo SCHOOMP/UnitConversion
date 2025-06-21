@@ -65,8 +65,7 @@ public class UnitConverterFrame extends JFrame {
             String to = (String) toUnitBox.getSelectedItem();
 
             double result = UnitConverterLogic.convert(category, from, to, input);
-            String formatted = String.format("%.2f", result);
-            resultLabel.setText("Result: " + formatted);
+            resultLabel.setText("Result: " + String.format("%.2f", result));
         } catch (NumberFormatException ex) {
             resultLabel.setText("Please enter a valid number.");
         }

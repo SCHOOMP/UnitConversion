@@ -7,7 +7,7 @@ public class UnitConverterLogic {
             case "Length":
                 return new String[]{"Kilometers", "Miles"};
             case "Temperature":
-                return new String[]{"Celsius", "Fahrenheit"};
+                return new String[]{"Celsius", "Fahrenheit", "Kelvin"};
             default:
                 return new String[]{};
         }
@@ -20,7 +20,11 @@ public class UnitConverterLogic {
         } else if (category.equals("Temperature")) {
             if (from.equals("Celsius") && to.equals("Fahrenheit")) return (value * 9 / 5) + 32;
             if (from.equals("Fahrenheit") && to.equals("Celsius")) return (value - 32) * 5 / 9;
+            if (from.equals("Celsius") && to.equals("Kelvin")) return (value + 273.15);
+            if (from.equals("Fahrenheit") && to.equals("Kelvin")) return (1.8 * (value-273) + 32);
+            if (from.equals("Kelvin") && to.equals("Fahrenheit")) return ((value - 32) * 5/9 + 273.15);
+            if (from.equals("Kelvin") && to.equals("Celsius")) return (value - 273.15);
         }
-        return value; // If units are the same or unrecognized
+        return value;
     }
 }
